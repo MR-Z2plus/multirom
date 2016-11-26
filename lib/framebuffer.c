@@ -286,16 +286,20 @@ void fb_cpy_fb_with_rotation(px_type *dst, px_type *src)
     switch(fb_rotation)
     {
         case 0:
-            memcpy(dst, src, fb.vi.xres_virtual * fb.vi.yres * PIXEL_SIZE);
-            break;
-        case 90:
-            fb_rotate_90deg(dst, src);
-            break;
-        case 180:
+            //memcpy(dst, src, fb.vi.xres_virtual * fb.vi.yres * PIXEL_SIZE);
             fb_rotate_180deg(dst, src);
             break;
-        case 270:
+        case 90:
+            //fb_rotate_90deg(dst, src);
             fb_rotate_270deg(dst, src);
+            break;
+        case 180:
+            //fb_rotate_180deg(dst, src);
+            memcpy(dst, src, fb.vi.xres_virtual * fb.vi.yres * PIXEL_SIZE);
+            break;
+        case 270:
+            //fb_rotate_270deg(dst, src);
+            fb_rotate_90deg(dst, src);
             break;
     }
 }
